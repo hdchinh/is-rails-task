@@ -1,5 +1,5 @@
 module API
-  class QueueJobController < API::BaseController
+  class QueueJobsController < API::BaseController
     before_action :set_pagination_params, only: [:index]
 
     def index
@@ -13,7 +13,7 @@ module API
     private
 
     def queue_job_params
-      params.require(:queue_jobs).permit(:job_type)
+      params.require(:queue_job).permit(:job_type)
     end
   end
 end
