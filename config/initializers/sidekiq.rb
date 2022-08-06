@@ -5,7 +5,7 @@ Sidekiq.configure_server do |config|
     ssl_params: {
       verify_mode: OpenSSL::SSL::VERIFY_NONE,
       namespace: "test-august",
-      url: "redis://localhost:6379/1"
+      url: (ENV["REDIS_URL"] || "redis://localhost:6379/1")
     }
   }
 end
@@ -15,7 +15,7 @@ Sidekiq.configure_client do |config|
     ssl_params: {
       verify_mode: OpenSSL::SSL::VERIFY_NONE,
       namespace: "test-august",
-      url: "redis://localhost:6379/1"
+      url: (ENV["REDIS_URL"] || "redis://localhost:6379/1")
     }
   }
 end
