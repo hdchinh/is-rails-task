@@ -70,3 +70,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rack-cors'
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
 gem 'jwt'
+gem 'sidekiq', '6.1.2'
+gem 'sidekiq-cron', '1.2.0'
+gem 'redis', '4.6.0'
+gem 'redis-namespace', '1.8.1'
+gem 'redis-rails', '5.0.2'

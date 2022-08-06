@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_06_101355) do
+ActiveRecord::Schema.define(version: 2022_08_06_122125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2022_08_06_101355) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "email", null: false
     t.string "password_digest", null: false
+    t.integer "total_requests_last_hour", default: 0
+    t.integer "total_requests_last_month", default: 0
   end
 
   create_table "queue_jobs", force: :cascade do |t|
@@ -33,5 +35,15 @@ ActiveRecord::Schema.define(version: 2022_08_06_101355) do
     t.index ["client_id"], name: "index_queue_jobs_on_client_id"
   end
 
+  create_table "user_metrics", force: :cascade do |t|
+    t.string "month"
+    t.integer "total_requests", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "client_id", null: false
+    t.index ["client_id"], name: "index_user_metrics_on_client_id"
+  end
+
   add_foreign_key "queue_jobs", "clients"
+  add_foreign_key "user_metrics", "clients"
 end

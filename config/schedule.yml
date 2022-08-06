@@ -1,0 +1,9 @@
+update_requests_count_per_hour_job:
+  cron: "0 * * * *"
+  class: "UpdateRequestsCountWorker"
+  queue: default
+
+update_requests_count_per_month_job:
+  cron: "0 0 1 * *"
+  class: "UpdateRequestsCountByMonthWorker"
+  queue: default

@@ -9,6 +9,10 @@ module API
 
     def authorize_request!
       @current_client = (AuthorizeAPIRequest.new(request.headers).call)[:client]
+
+      # Monitor requests
+      # Can use a background job to make better response time
+      Client.increment_counter(:total_requests_last_hour, @current_client.id, touch: true)
     end
 
     def set_pagination_params
