@@ -1,5 +1,5 @@
 module API
-  class QueueJobController
+  class QueueJobController < API::BaseController
     before_action :set_pagination_params, only: [:index]
 
     def index

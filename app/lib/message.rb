@@ -3,11 +3,15 @@ class Message
     "Sorry, #{record} not found."
   end
 
-  def self.invalid_api_key
-    "Invalid api-key"
+  def self.invalid_credentials
+    "Invalid credentials"
   end
 
-  def self.missing_api_key
-    "Missing api-key"
+  def self.missing_token
+    "Missing token"
+  end
+
+  def self.invalid_token
+    "Invalid token"
   end
 end

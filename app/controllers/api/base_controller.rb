@@ -1,20 +1,14 @@
 module API
   class BaseController < ApplicationController
+    include Response
     include ExceptionHandler
-    include Message
 
-    before_action :client_authentication!
+    before_action :authorize_request!
 
     protected
 
-    def client_authentication!
-      api_key = headers["api-key"].split(" ").last
-      raise(ExceptionHandler::MissingApiKey, Message.missing_api_key) if api_key.blank?
-
-      @current_client = Client.find_by(api_key: api_key)
-      raise(ExceptionHandler::InvalidApiKey, Message.missing_invalid_api_key) if @current_client.blank?
-
-      # Count access
+    def authorize_request!
+      @current_client = (AuthorizeAPIRequest.new(request.headers).call)[:client]
     end
 
     def set_pagination_params
