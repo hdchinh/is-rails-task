@@ -68,3 +68,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rack-cors'
+gem 'kaminari', '~> 1.2', '>= 1.2.2'
