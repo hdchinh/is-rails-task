@@ -13,7 +13,7 @@ module API
     private
 
     def queue_job_params
-      params.require(:queue_job).permit(:job_type)
+      params.require(:queue_job).permit(:job_type, :execute_at, :job_params)
     end
   end
 end

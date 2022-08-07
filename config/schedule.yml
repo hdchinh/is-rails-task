@@ -7,3 +7,13 @@ update_requests_count_per_month_job:
   cron: "0 0 1 * *"
   class: "UpdateRequestsCountByMonthWorker"
   queue: default
+
+execute_queue_jobs_job:
+  cron: "* * * * *"
+  class: "ExecuteQueueJobsWorker"
+  queue: default
+
+update_status_of_queue_jobs_job:
+  cron: "* * * * *"
+  class: "UpdateStatusOfQueueJobsWorker"
+  queue: default

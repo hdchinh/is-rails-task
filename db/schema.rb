@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_06_122125) do
+ActiveRecord::Schema.define(version: 2022_08_07_034703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,13 +25,22 @@ ActiveRecord::Schema.define(version: 2022_08_06_122125) do
     t.integer "total_requests_last_month", default: 0
   end
 
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "queue_jobs", force: :cascade do |t|
-    t.integer "status", default: 0
+    t.string "status", default: "0"
     t.integer "job_type", default: 0
     t.integer "priority", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "client_id", null: false
+    t.datetime "execute_at"
+    t.jsonb "job_params", default: {}
+    t.string "worker_id"
     t.index ["client_id"], name: "index_queue_jobs_on_client_id"
   end
 
