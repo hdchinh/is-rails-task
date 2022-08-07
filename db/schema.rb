@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_07_034703) do
+ActiveRecord::Schema.define(version: 2022_08_07_035223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2022_08_07_034703) do
     t.datetime "execute_at"
     t.jsonb "job_params", default: {}
     t.string "worker_id"
+    t.boolean "executed", default: false
     t.index ["client_id"], name: "index_queue_jobs_on_client_id"
   end
 

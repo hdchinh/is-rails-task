@@ -17,9 +17,7 @@ class ExecuteQueueJobsWorker
         worker_id = StoreMovieWorker.perform_in(time_by_minutes, queue_job.id)
       end
 
-      next if worker_id.blank?
-
-      queue_job.update(worker_id: worker_id, executed: true)
+      queue_job.update(worker_id: worker_id, executed: true) if worker_id
     end
 
     # Execute critical jobs
