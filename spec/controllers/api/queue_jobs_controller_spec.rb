@@ -38,7 +38,7 @@ RSpec.describe "QueueJobs", type: :request do
 
   describe "POST /api/queue_jobs" do
     let(:url) { "/api/queue_jobs" }
-    let(:params) { { queue_job: { job_type: 1 } } }
+    let(:params) { { queue_job: { job_type: "return_current_time" } } }
 
     context "when request has valid token" do
       subject { post url, headers: { "Accept" => "application/json", :"Authorization" => valid_token }, params: params }
